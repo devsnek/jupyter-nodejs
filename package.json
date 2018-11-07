@@ -1,0 +1,19 @@
+{
+  "name": "jupyter-nodejs",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "acorn-walk": "^6.1.0",
+    "acorn": "^6.0.4",
+    "recast": "^0.16.0",
+    "zeromq": "^5.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "install.js"
+  },
+  "author": "Gus Caplan <me@gus.host>",
+  "license": "MIT"
+}
