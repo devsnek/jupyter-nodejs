@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "acorn-walk": "^6.1.0",
     "acorn": "^6.0.4",
     "recast": "^0.16.0",
     "zeromq": "^5.1.0"

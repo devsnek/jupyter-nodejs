@@ -7,7 +7,6 @@ const util = require('util');
 const vm = require('vm');
 const recast = require('recast');
 const acorn = require('acorn');
-const walk = require('acorn-walk');
 const Module = require('module');
 
 function rewriteCode(source) {
@@ -19,18 +18,16 @@ function rewriteCode(source) {
 
   const b = recast.types.builders;
 
-  walk.ancestor(ast.program, {
-    VariableDeclaration(node) {
+  ast.program.body.forEach((node, index) => {
+    if (node.type === 'VariableDeclaration') {
       node.kind = 'var';
-    },
-    ClassDeclaration(node, ancestors) {
+    }
+    if (node.type === 'ClassDeclaration') {
       const declaration = b.variableDeclaration('var', [
         b.variableDeclarator(node.id, { ...node, type: 'ClassExpression' }),
       ]);
-      const parent = ancestors[0];
-      const index = parent.body.indexOf(node);
-      parent.body[index] = declaration;
-    },
+      ast.program.body[index] = declaration;
+    }
   });
 
   return recast.print(ast).code;
