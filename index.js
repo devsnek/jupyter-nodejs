@@ -75,7 +75,7 @@ const info = {
   banner: 'Node.js for Jupyter',
   language_info: {
     name: 'Node.js',
-    version: '0.10',
+    version: process.version,
     mimetype: 'text/javascript',
     file_extension: '.js',
     pygments_lexer: 'javascript',
